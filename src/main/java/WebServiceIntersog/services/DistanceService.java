@@ -13,7 +13,7 @@ public interface DistanceService {
      * @param distance
      * @return
      */
-    public boolean putDistance(Distance distance);
+    public void putDistance(Distance distance);
 
 
     /**

@@ -2,6 +2,8 @@ package WebServiceIntersog.services;
 
 import WebServiceIntersog.domain.Distance;
 import WebServiceIntersog.persistence.MongoConfig;
+import WebServiceIntersog.repositories.DistanceRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.stereotype.Service;
@@ -15,17 +17,24 @@ import javax.inject.Named;
 @Service
 public class DistanceServiceImpl implements DistanceService {
 
-    @Inject
-    private MongoOperations mongoOperations;
+    @Autowired
+    private DistanceRepository distanceRepository;
 
     @Override
-    public boolean putDistance(Distance distance) {
-        mongoOperations.save(distance, "distances");
-        return true;
+    public void putDistance(Distance distance) {
+        distanceRepository.addNewDistance(distance);
     }
 
     @Override
     public Distance getDistance(Distance distance) {
-        return mongoOperations.findById(distance.getCityA()+distance.getCityB(), Distance.class);
+        return distanceRepository.findByFromCityToCity(distance);
+    }
+
+    public DistanceRepository getDistanceRepository() {
+        return distanceRepository;
+    }
+
+    public void setDistanceRepository(DistanceRepository distanceRepository) {
+        this.distanceRepository = distanceRepository;
     }
 }

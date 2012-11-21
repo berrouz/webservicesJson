@@ -1,8 +1,15 @@
 package WebServiceIntersog.domain;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
 import java.math.BigDecimal;
 
+@Document
 public class Distance {
+
+    @Id
+    private int id;
     private String cityA;
     private String cityB;
     private BigDecimal distance;
@@ -31,6 +38,14 @@ public class Distance {
         this.distance = distance;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -51,5 +66,15 @@ public class Distance {
         result = 31 * result + (cityB != null ? cityB.hashCode() : 0);
         result = 31 * result + (distance != null ? distance.hashCode() : 0);
         return result;
+    }
+
+    @Override
+    public String toString() {
+        return "Distance {" +
+                "id=" + id +
+                ", cityA='" + cityA + '\'' +
+                ", cityB='" + cityB + '\'' +
+                ", distance=" + distance +
+                '}';
     }
 }

@@ -17,7 +17,7 @@ import java.net.UnknownHostException;
 public class MongoConfig {
     public @Bean
     MongoDbFactory mongoDbFactory() throws UnknownHostException {
-        return new SimpleMongoDbFactory(new Mongo(), "application");
+        return new SimpleMongoDbFactory(new Mongo(), "services");
     }
 
     public @Bean
