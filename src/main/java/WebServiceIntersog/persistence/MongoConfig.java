@@ -15,15 +15,15 @@ import java.net.UnknownHostException;
 
 @Configuration
 public class MongoConfig {
-    public @Bean
-    MongoDbFactory mongoDbFactory() throws UnknownHostException {
+    @Bean
+    public MongoDbFactory mongoDbFactory() throws UnknownHostException {
         return new SimpleMongoDbFactory(new Mongo(), "services");
     }
 
-    public @Bean
-    MongoTemplate mongoTemplate() throws UnknownHostException {
+
+    @Bean
+    public MongoTemplate mongoTemplate() throws UnknownHostException {
         MongoTemplate mongoTemplate = new MongoTemplate(mongoDbFactory());
         return mongoTemplate;
     }
-
 }

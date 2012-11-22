@@ -28,6 +28,7 @@ public class DistanceWebService {
     @Produces(MediaType.APPLICATION_JSON)
     public Distance getDistance(Distance distance){
         System.out.println(distance.toString());
+        System.out.println(distanceService.getDistance(distance));
         return distanceService.getDistance(distance);
     }
 

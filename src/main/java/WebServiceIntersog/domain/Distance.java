@@ -12,7 +12,7 @@ public class Distance {
     private int id;
     private String cityA;
     private String cityB;
-    private BigDecimal distance;
+    private int distance;
 
     public String getCityA() {
         return cityA;
@@ -30,11 +30,11 @@ public class Distance {
         this.cityB = cityB;
     }
 
-    public BigDecimal getDistance() {
+    public int getDistance() {
         return distance;
     }
 
-    public void setDistance(BigDecimal distance) {
+    public void setDistance(int distance) {
         this.distance = distance;
     }
 
@@ -49,28 +49,30 @@ public class Distance {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (!(o instanceof Distance)) return false;
 
         Distance distance1 = (Distance) o;
 
+        if (distance != distance1.distance) return false;
+        if (id != distance1.id) return false;
         if (cityA != null ? !cityA.equals(distance1.cityA) : distance1.cityA != null) return false;
         if (cityB != null ? !cityB.equals(distance1.cityB) : distance1.cityB != null) return false;
-        if (distance != null ? !distance.equals(distance1.distance) : distance1.distance != null) return false;
 
         return true;
     }
 
     @Override
     public int hashCode() {
-        int result = cityA != null ? cityA.hashCode() : 0;
+        int result = id;
+        result = 31 * result + (cityA != null ? cityA.hashCode() : 0);
         result = 31 * result + (cityB != null ? cityB.hashCode() : 0);
-        result = 31 * result + (distance != null ? distance.hashCode() : 0);
+        result = 31 * result + distance;
         return result;
     }
 
     @Override
     public String toString() {
-        return "Distance {" +
+        return "Distance{" +
                 "id=" + id +
                 ", cityA='" + cityA + '\'' +
                 ", cityB='" + cityB + '\'' +
