@@ -7,6 +7,9 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+
+import javax.ws.rs.core.MediaType;
+
 import static org.junit.Assert.*;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -15,20 +18,27 @@ public class DistanceWebServiceIT {
 
     @Test
     public void testPutDistance(){
-        String input = "{\"cityA\":\"Moscow\", \"cityB\":\"Kiev\", \"distance\":\"1100\"}";
-        assertEquals(200,putDistance(input).getClientResponseStatus().getStatusCode());
+        String input = "{\"cityA\":\"Moscow\",\"cityB\":\"Kiev\",\"distance\":1000}";
+        assertEquals(204,putDistance(input).getClientResponseStatus().getStatusCode());
+    }
+
+    @Test
+    public void testGetDistance(){
+        String input = "{\"cityA\":\"Moscow\",\"cityB\":\"Kiev\",\"distance\":null}";
+        String expected = "{\"cityA\":\"Moscow\",\"cityB\":\"Kiev\",\"distance\":1000}";
+        assertEquals(expected,getDistance(input).getEntity(String.class));
+
     }
 
     public ClientResponse putDistance(String jsonString){
         Client client = Client.create();
-            WebResource webResource = client.resource("http://localhost:8080/webservice/rest/json/distances/post");
-        return webResource.accept("application/json").post(ClientResponse.class, jsonString );
+        WebResource webResource = client.resource("http://localhost:8080/webservice/rest/json/distances/put");
+        return webResource.type("application/json").post(ClientResponse.class, jsonString );
     }
 
-    public String getDistance(String jsonString){
+    public ClientResponse getDistance(String jsonString){
         Client client = Client.create();
         WebResource webResource = client.resource("http://localhost:8080/webservice/rest/json/distances/get");
-        ClientResponse clientResponse = webResource.accept("application/json").post(ClientResponse.class, jsonString );
-        return clientResponse.getEntity(String.class);
+        return webResource.accept(MediaType.APPLICATION_JSON).type("application/json").post(ClientResponse.class, jsonString );
     }
 }

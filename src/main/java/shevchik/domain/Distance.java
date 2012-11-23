@@ -1,8 +1,11 @@
 package shevchik.domain;
 
+import org.springframework.data.mongodb.core.index.CompoundIndex;
+import org.springframework.data.mongodb.core.index.CompoundIndexes;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document
+@CompoundIndexes({@CompoundIndex(name = "cities", def = "{'cityA' : 1, 'cityB' : 1}", unique = true)})
 public class Distance {
 
     private String cityA;
