@@ -21,13 +21,13 @@ public class DistanceWebServiceIT {
 
     public ClientResponse putDistance(String jsonString){
         Client client = Client.create();
-            WebResource webResource = client.resource("http://localhost:8090/webservice/rest/json/distances/post");
+            WebResource webResource = client.resource("http://localhost:8080/webservice/rest/json/distances/post");
         return webResource.accept("application/json").post(ClientResponse.class, jsonString );
     }
 
     public String getDistance(String jsonString){
         Client client = Client.create();
-        WebResource webResource = client.resource("http://localhost:8090/webservice/rest/json/distances/get");
+        WebResource webResource = client.resource("http://localhost:8080/webservice/rest/json/distances/get");
         ClientResponse clientResponse = webResource.accept("application/json").post(ClientResponse.class, jsonString );
         return clientResponse.getEntity(String.class);
     }
