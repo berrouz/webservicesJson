@@ -1,7 +1,6 @@
-package WebServiceIntersog.repositories;
+package shevchik.repositories;
 
-import WebServiceIntersog.domain.Distance;
-import com.mongodb.BasicDBObject;
+import shevchik.domain.Distance;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;

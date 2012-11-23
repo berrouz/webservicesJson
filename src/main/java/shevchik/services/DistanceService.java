@@ -1,7 +1,7 @@
-package WebServiceIntersog.services;
+package shevchik.services;
 
 
-import WebServiceIntersog.domain.Distance;
+import shevchik.domain.Distance;
 
 /**
  * Distance Service interface

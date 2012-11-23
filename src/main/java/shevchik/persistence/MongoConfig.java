@@ -1,4 +1,4 @@
-package WebServiceIntersog.persistence;
+package shevchik.persistence;
 
 import com.mongodb.Mongo;
 import org.springframework.context.annotation.Bean;

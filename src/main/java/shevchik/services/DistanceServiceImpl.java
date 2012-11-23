@@ -1,15 +1,9 @@
-package WebServiceIntersog.services;
+package shevchik.services;
 
-import WebServiceIntersog.domain.Distance;
-import WebServiceIntersog.persistence.MongoConfig;
-import WebServiceIntersog.repositories.DistanceRepository;
+import shevchik.domain.Distance;
+import shevchik.repositories.DistanceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.mongodb.core.MongoOperations;
-import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.stereotype.Service;
-
-import javax.inject.Inject;
-import javax.inject.Named;
 
 /**
  * Distance Service Implementation

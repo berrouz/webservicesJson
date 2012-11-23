@@ -1,22 +1,18 @@
-package WebServiceIntersog.test;
+package shevchik.services;
 
-import WebServiceIntersog.domain.Distance;
-import WebServiceIntersog.services.DistanceServiceImpl;
-import WebServiceIntersog.webservices.DistanceWebService;
+import shevchik.domain.Distance;
+import shevchik.services.DistanceServiceImpl;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.test.context.transaction.TransactionConfiguration;
-import org.springframework.transaction.annotation.Transactional;
-
 import javax.inject.Inject;
-import java.math.BigDecimal;
-import static org.junit.Assert.*;
+
+import static org.junit.Assert.assertEquals;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations={"classpath:/META-INF/spring/applicationContext.xml"})
-public class DistanceWebServicesTest
+public class DistanceServiceImplIT
 {
     @Inject
     private DistanceServiceImpl distanceService;
@@ -29,7 +25,6 @@ public class DistanceWebServicesTest
         distance.setDistance(7890);
         distanceService.putDistance(distance);
         assertEquals(distance, distanceService.getDistance(distance));
-
     }
 
 }

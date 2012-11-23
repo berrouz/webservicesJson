@@ -1,8 +1,7 @@
-package WebServiceIntersog.webservices;
+package shevchik.webservices;
 
-import WebServiceIntersog.domain.Distance;
-import WebServiceIntersog.services.DistanceServiceImpl;
-import org.springframework.data.mongodb.core.MongoTemplate;
+import shevchik.domain.Distance;
+import shevchik.services.DistanceServiceImpl;
 import org.springframework.stereotype.Component;
 
 import javax.inject.Inject;
@@ -27,8 +26,6 @@ public class DistanceWebService {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Distance getDistance(Distance distance){
-        System.out.println(distance.toString());
-        System.out.println(distanceService.getDistance(distance));
         return distanceService.getDistance(distance);
     }
 
