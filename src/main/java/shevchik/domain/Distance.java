@@ -4,6 +4,13 @@ import org.springframework.data.mongodb.core.index.CompoundIndex;
 import org.springframework.data.mongodb.core.index.CompoundIndexes;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+/**
+ * Entity which represents an object that is saved in MongoDB as Document
+ * Compound index is based on 2 fields: cityA and cityB and it is unique in order
+ * to avoid duplication of data in database
+ * @author shevchik
+ * @version 0.0.1
+ */
 @Document
 @CompoundIndexes({@CompoundIndex(name = "cities", def = "{'cityA' : 1, 'cityB' : 1}", unique = true)})
 public class Distance {

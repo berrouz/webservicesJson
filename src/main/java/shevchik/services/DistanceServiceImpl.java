@@ -7,6 +7,8 @@ import org.springframework.stereotype.Service;
 
 /**
  * Distance Service Implementation
+ * @author shevchik
+ * @version 0.0.1
  */
 @Service
 public class DistanceServiceImpl implements DistanceService {

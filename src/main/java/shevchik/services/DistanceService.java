@@ -5,6 +5,8 @@ import shevchik.domain.Distance;
 
 /**
  * Distance Service interface
+ * @author shevchik
+ * @version 0.0.1
  */
 public interface DistanceService {
 

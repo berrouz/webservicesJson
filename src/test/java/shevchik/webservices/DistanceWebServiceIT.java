@@ -13,7 +13,7 @@ import javax.ws.rs.core.MediaType;
 import static org.junit.Assert.*;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations={"classpath:/META-INF/spring/applicationContext.xml"})
+@ContextConfiguration(locations={"classpath:/applicationContext.xml"})
 public class DistanceWebServiceIT {
 
     @Test
@@ -30,12 +30,29 @@ public class DistanceWebServiceIT {
 
     }
 
+    /**
+     * Gets JSON-formatted Distance object and puts it into MongoDB
+     * @param jsonString
+     * @return
+     */
     public ClientResponse putDistance(String jsonString){
         Client client = Client.create();
         WebResource webResource = client.resource("http://localhost:8080/webservice/rest/json/distances/put");
         return webResource.type("application/json").post(ClientResponse.class, jsonString );
     }
 
+
+    /**
+     * Gets JSON-formatted Distance object with distance null
+     * and returns JSON-formatted Distance with distance if an object exists in MongoDB
+     *
+     * Example:
+     * { 'cityA' : 'Moscow', 'cityB' : 'Kiev', 'distance' : null}
+     * If an object can be found in MongoDB it gets returned with set distance field
+     * { 'cityA' : 'Moscow', 'cityB' : 'Kiev', 'distance' : 1000}
+     * @param jsonString
+     * @return
+     */
     public ClientResponse getDistance(String jsonString){
         Client client = Client.create();
         WebResource webResource = client.resource("http://localhost:8080/webservice/rest/json/distances/get");
