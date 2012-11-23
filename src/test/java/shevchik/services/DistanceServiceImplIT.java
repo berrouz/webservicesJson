@@ -11,7 +11,7 @@ import javax.inject.Inject;
 import static org.junit.Assert.assertEquals;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations={"classpath:/applicationContext.xml"})
+@ContextConfiguration(locations={"classpath:applicationContext.xml"})
 public class DistanceServiceImplIT
 {
     @Inject

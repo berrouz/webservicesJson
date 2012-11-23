@@ -13,7 +13,7 @@ import javax.ws.rs.core.MediaType;
 import static org.junit.Assert.*;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations={"classpath:/applicationContext.xml"})
+@ContextConfiguration(locations={"classpath:applicationContext.xml"})
 public class DistanceWebServiceIT {
 
     @Test
